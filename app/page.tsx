@@ -4,7 +4,7 @@ import FormInput from "./components/form-input";
 import FormButton from "./components/form-button";
 import { useFormState } from "react-dom";
 import { logIn } from "./login/actions";
-
+import "./lib/db"
 
 export default function Home() {
   const [state, action] = useFormState(logIn, null);
