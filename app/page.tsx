@@ -1,28 +1,24 @@
-"use client";
-
-import FormInput from "./components/form-input";
-import FormButton from "./components/form-button";
-import { useFormState } from "react-dom";
-import { logIn } from "./login/actions";
-import "./lib/db"
+import Link from "next/link";
 
 export default function Home() {
-  const [state, action] = useFormState(logIn, null);
-  console.log(state);
   return (
-    <main>
-      <div className="min-h-screen flex flex-col items-center ">
-      <div className="flex flex-col items-center my-auto">
-        <div className="text-5xl mb-10">🔥</div>
-        <form action={action} className="flex flex-col gap-5 mb-5">
-        <FormInput name="email" type="email" placeholder="Email" required errors={state?.fieldErrors.email} />
-        <FormInput name="username" type="text" placeholder="Username" required errors={state?.fieldErrors.username} />
-        <FormInput name="password" type="password" placeholder="Password" required errors={state?.fieldErrors.password} />
-        <FormButton text="log in" />
-        </form>
-        {!state?.fieldErrors ? <div>"Welcome back!"</div>: null}
+    <div className="flex flex-col items-center justify-between min-h-screen p-6">
+      <div className="my-auto flex flex-col items-center gap-2 *:font-medium">
+        <span className="text-9xl">🥕</span>
+        <h1 className="text-4xl ">당근</h1>
+        <h2 className="text-2xl">당근 마겟에 어서오세요!</h2>
       </div>
+      <div className="flex flex-col items-center gap-3 w-full">
+        <Link href="/create-account" className="primary-btn text-lg py-2.5">
+          시작하기
+        </Link>
+        <div className="flex gap-2">
+          <span>이미 계정이 있나요?</span>
+          <Link href="/login" className="hover:underline">
+            로그인
+          </Link>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
